@@ -1,3 +1,4 @@
+import Card from "@/components/Card";
 import Image from "next/image";
 
 export default function Home() {
@@ -8,7 +9,7 @@ export default function Home() {
         <p className="text-xl text-gray-500 text-center">Explore the latest in technology and elevate your lifestyle with cutting-edge gadgets.</p>
       </div>
 
-      <div className="mt-10 space-y-4 px-4 py-8 grid grid-cols-1 lg:grid-cols-12 lg:py-16">
+      <div className="mt-10 space-y-4 px-4 py-8 grid grid-cols-1 lg:grid-cols-12 lg:py-16 lg:gap-8 xl:gap-0">
           <div className="col-span-7">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 max-w-2xl">Discover Tech Wonders at GadgetGrove!</h2>
             <p className="text-gray-500 font-light mb-6 lg:mb-8 lg:text-xl max-w-2xl">
@@ -36,6 +37,8 @@ export default function Home() {
 
         <div className="">
           <h2 className="text-primary text-center font-bold text-4xl">Featured Products</h2>
+          <Card />
+          
         </div>
       
     </div>
