@@ -14,9 +14,9 @@ export const product = defineType({
     defineField({
       name: 'slug',
       title: 'Slug',
-      type: 'string',
+      type: 'slug',
       options: {
-        source: name,
+        source: 'name',
         maxLength: 200,
       },
       validation: (Rule) => Rule.required(),

@@ -1,7 +1,12 @@
 import Card from "@/components/Card";
 import Image from "next/image";
+import { getProducts, client } from "@/sanity/lib/sanity-utils";
 
-export default function Home() {
+export default async function Home() {
+
+  const products = await getProducts();
+  console.log('Here are the products:', products)
+
   return (
     <div className="mt-10 flex flex-col max-w-7xl mx-auto px-4">
       <div className="flex flex-col gap-4 items-center">
