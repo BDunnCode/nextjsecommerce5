@@ -28,8 +28,8 @@ export default function Home() {
             <Image 
               src="/imageplaceholder.jpg"
               alt="cell phones"
-              height={450}
-              width={450}
+              height={550}
+              width={550}
             />
           </div>
         </div>
