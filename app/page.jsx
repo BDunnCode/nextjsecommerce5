@@ -9,7 +9,7 @@ export default function Home() {
         <p className="text-xl text-gray-500 text-center">Explore the latest in technology and elevate your lifestyle with cutting-edge gadgets.</p>
       </div>
 
-      <div className="mt-10 space-y-4 flex justify-center items-center">
+      <div className="mt-10 space-y-6 flex justify-center items-center">
           <div className="col-span-1 lg:col-span-7 max-w-screen-xl">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 lg:mb-8 max-w-2xl">Discover Tech Wonders at GadgetGrove!</h2>
             <p className="text-gray-500 font-light mb-6 lg:mb-8 lg:text-xl max-w-2xl">
@@ -35,7 +35,7 @@ export default function Home() {
         </div>
 
 
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center my-10 space-y-4">
             <h2 className="text-primary text-center font-bold text-4xl my-10">Featured Products</h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
