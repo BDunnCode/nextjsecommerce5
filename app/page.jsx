@@ -43,11 +43,13 @@ export default async function Home() {
         <div className="flex flex-col justify-center items-center my-10 space-y-4">
             <h2 className="text-primary text-center font-bold text-4xl my-10">Featured Products</h2>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
-              <Card />
-              <Card />
-              <Card />
-            </div>
+            <ul className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+              {products.map((product) => (
+                <li key={product.name}>
+                  <Card product={product} />
+                </li>
+              ))}
+            </ul>
           
         </div>
       

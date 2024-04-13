@@ -1,23 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const Card = () => {
+const Card = ({ product }) => {
   return (
     <div className="flex flex-col relative shadow-lg max-w-[400px]">
-      <Link href="#">
+      <Link href={`product-details/${product.slug}`}>
+        <div className="relative h-96">
           <Image 
-            src="/imageplaceholder.jpg"
-            alt="product image"
-            height={400}
-            width={400}
-            className="hover:scale-105 transition duration-300"
-          />
+              src={product.image}
+              alt="product image"
+              fill              
+              className="hover:scale-105 transition duration-300 object-cover"
+            />
+        </div>
+
           <div className="flex flex-col justify-start mt-10 mb-16">
-            <h3 className="text-primary mb-3 font-semibold text-2xl text-center">Macbook Pro M3 2023</h3>
-            <p className="text-gray-600 text-xl text-center truncate">DESCRIPTION GOES HERE</p>
+            <h3 className="text-primary mb-3 font-semibold text-2xl text-center">{product.name}</h3>
+            <p className="text-gray-600 text-xl text-center truncate">{product.description}</p>
           </div>
         <span className="absolute bottom-0 right-0 text-primary font-semibold bg-[#e8e5f0] p-2">
-            $300
+            ${product.price}
         </span>
         </Link>
     </div>

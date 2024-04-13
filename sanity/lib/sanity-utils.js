@@ -23,6 +23,6 @@ export async function getProducts() {
       "slug": slug.current,
     }`,
     {},
-    { next: {revalidate : 60}}
+    { next: {revalidate : 3600}}
   );
 };
