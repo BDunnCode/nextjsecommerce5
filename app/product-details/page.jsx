@@ -20,7 +20,6 @@ const ProductDetails = () => {
     setQty(newQty);
   };
 
-
   return (
     <div className="flex flex-col items-center justify-center mx-auto max-w-7xl">
       <div className="grid grid-cols-1 lg:grid-cols-2 mt-20">
@@ -52,6 +51,27 @@ const ProductDetails = () => {
           </div>
         </div>
       </div>
+
+      <ul className="flex justify-start w-full gap-4">
+        <Image  
+          src="/imageplaceholder.jpg"
+          alt=""
+          height={50}
+          width={50}
+        />
+        <Image  
+          src="/imageplaceholder.jpg"
+          alt=""
+          height={50}
+          width={50}
+        />
+        <Image  
+          src="/imageplaceholder.jpg"
+          alt=""
+          height={50}
+          width={50}
+        />
+      </ul>
     </div>
   )
 };
