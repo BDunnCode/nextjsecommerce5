@@ -14,17 +14,14 @@ const Header = () => {
             width={50}
             height={50}
           />
-          <div className="text-3xl font-bold">
+          <div className="text-2xl lg:text-3xl font-bold">
             TechTrove
           </div>
         </div>
 
         <div className="flex gap-3">
-          <FaShoppingCart
-            height={25}
-            width={25}
-          />
-          <FaTruck />
+          <FaShoppingCart className="text-3xl hover:scale-125 text-primary transform duration-150" />
+          <FaTruck className="text-3xl hover:scale-125 text-primary transform duration-150" />
         </div>
 
 
