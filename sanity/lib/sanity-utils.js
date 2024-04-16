@@ -39,7 +39,7 @@ export async function getProductBySlug(slug) {
       "image": image.asset->url,
       "slug": slug.current,
       "extraImages": extraImages[].asset->url,
-      colors
+      colors,
     }`,
     { slug },
     {next: { 

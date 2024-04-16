@@ -3,8 +3,8 @@ import Image from "next/image";
 import {useState} from "react";
 
 const Details = ({product}) => {
-  // const [selectedImage, setSelectedImage] = useState(product?.image);
-  // const [selectedColor, setSelectedColor] = useState(product?.colors[0]);
+  const [selectedImage, setSelectedImage] = useState(product?.image);
+  const [selectedColor, setSelectedColor] = useState(product?.colors[0]);
 
   const [qty, setQty] = useState(1);
 
@@ -20,11 +20,11 @@ const Details = ({product}) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center mx-auto max-w-7xl">
+    <div className="mx-auto max-w-7xl">
       <div className="grid grid-cols-1 lg:grid-cols-2 mt-20">
         <div className="relative h-96">
           <Image  
-            src={product.image}
+            src={selectedImage}
             alt="Image of Product"
             className="object-cover"
             fill
@@ -52,13 +52,31 @@ const Details = ({product}) => {
       </div>
 
       <div className="mt-2">
-        <ul className="flex gap-4 overflow-x-auto">
-          <li className="w-20 h-20 relative overflow-hidden aspect-square cursor-pointer"></li>
+          <ul className="flex gap-4 overflow-x-auto">
+              <li onClick={()=>{setSelectedImage(product?.image)}} className={`${selectedImage == product?.image? "border-4 border-primary":""} w-20 relative overflow-hidden aspect-ratio-1 cursor-pointer hover:border-4 border-[#5b20b6]`}>
+                  <Image
+                    src={product?.image}
+                    fill
+                    className="object-cover"
+                    alt="small_art1"
+                  />
+                </li>
+          {
+            product?.extraImages?.map((image) => (
+              <li key={image} onClick={()=>{setSelectedImage(image)}} className={`${selectedImage == image ? "border-4 border-primary": ""} w-20 h-20 relative overflow-hidden aspect-square cursor-pointer`}>
+                <Image 
+                  src={image}
+                  alt="product_small"
+                  className="object-cover"
+                  fill
+                />
+              </li>
+            ))
+          }
         </ul>
       </div>
-
     </div>
-  )
-};
+  );
+}
 
 export default Details;
