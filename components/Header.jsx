@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import {UserButton} from "@clerk/nextjs";
 
 import { FaShoppingCart, FaTruck } from "react-icons/fa";
 
@@ -29,6 +30,7 @@ const Header = () => {
           <Link href="/order">
             <FaTruck className="text-3xl hover:scale-125 text-primary transform duration-150" />
           </Link>
+          <UserButton />
         </div>
 
       </div>

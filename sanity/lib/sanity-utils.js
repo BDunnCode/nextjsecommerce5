@@ -26,3 +26,23 @@ export async function getProducts() {
     { next: {revalidate : 3600}}
   );
 };
+
+export async function getProductBySlug(slug) {
+  return client.fetch(
+    groq`*[_type == "Product" && slug.current == $slug]{
+      _id,
+      createdAt,
+      name,
+      slug,
+      description,
+      price,
+      "image": image.asset->url,
+      "slug": slug.current,
+      "extraImages": extraImages[].asset->url,
+      colors
+    }`,
+    { slug },
+    {next: { 
+      revalidate: 3600, 
+    }});
+}
