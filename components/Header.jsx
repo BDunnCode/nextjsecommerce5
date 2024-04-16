@@ -30,7 +30,7 @@ const Header = () => {
           <Link href="/order">
             <FaTruck className="text-3xl hover:scale-125 text-primary transform duration-150" />
           </Link>
-          <UserButton />
+          <UserButton afterSignOutUrl="/" />
         </div>
 
       </div>

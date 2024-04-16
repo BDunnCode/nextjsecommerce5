@@ -47,29 +47,16 @@ const Details = ({product}) => {
           <div>
             <button className="bg-primary text-white py-3 px-5 rounded-lg">Add to Cart</button>
           </div>
+
         </div>
       </div>
 
-      <ul className="flex justify-start w-full gap-4">
-        <Image  
-          src="/imageplaceholder.jpg"
-          alt=""
-          height={50}
-          width={50}
-        />
-        <Image  
-          src="/imageplaceholder.jpg"
-          alt=""
-          height={50}
-          width={50}
-        />
-        <Image  
-          src="/imageplaceholder.jpg"
-          alt=""
-          height={50}
-          width={50}
-        />
-      </ul>
+      <div className="mt-2">
+        <ul className="flex gap-4 overflow-x-auto">
+          <li className="w-20 h-20 relative overflow-hidden aspect-square cursor-pointer"></li>
+        </ul>
+      </div>
+
     </div>
   )
 };
