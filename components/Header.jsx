@@ -1,10 +1,15 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import {UserButton} from "@clerk/nextjs";
 
+import {UserButton} from "@clerk/nextjs";
 import { FaShoppingCart, FaTruck } from "react-icons/fa";
+import useCartStore from '@/cartStore'
 
 const Header = () => {
+  const totalItems = useCartStore((state) => state.totalItems);
+  
   return (
     <div className="border-b-2">
       <div className="flex justify-between items-center p-3 max-w-7xl mx-auto">
@@ -23,10 +28,17 @@ const Header = () => {
           </div>
         </Link>
 
-        <div className="flex gap-3">
+        <div className="flex gap-3 items-center relative">
           <Link href="/cart">
             <FaShoppingCart className="text-3xl hover:scale-125 text-primary transform duration-150" />
           </Link>
+          { totalItems > 0 && (
+              <div className="bg-blue-500 h-5 w-5 rounded-full text-white text-xs flex items-center justify-center">
+                {totalItems}
+              </div>
+            )
+          }
+
           <Link href="/order">
             <FaTruck className="text-3xl hover:scale-125 text-primary transform duration-150" />
           </Link>

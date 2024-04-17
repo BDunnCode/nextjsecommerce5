@@ -35,7 +35,7 @@ const Cart = () => {
         </thead>
         <tbody>
           {products?.map((product) => (
-            <tr key={product?._id} className="hover:bg-gray-50 text-center border-b border-gray-300 text-[#5B20B6]">
+            <tr key={product?.name} className="hover:bg-gray-50 text-center border-b border-gray-300 text-[#5B20B6]">
               <td className="py-2 px-4 flex items-center">
                 <Image className='mr-2' src={product?.image} width={50} height={30} alt="art" />
                 {product?.name}
