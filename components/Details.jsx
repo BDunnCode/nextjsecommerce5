@@ -1,12 +1,17 @@
 "use client";
 import Image from "next/image";
 import {useState} from "react";
+import useCartStore from '@/cartStore'
 
 const Details = ({product}) => {
   const [selectedImage, setSelectedImage] = useState(product?.image);
   const [selectedColor, setSelectedColor] = useState(product?.colors[0]);
-
   const [qty, setQty] = useState(1);
+  const addToCart = useCartStore((state) => state.addToCart);
+
+  const handleAddToCart = () => { 
+    addToCart({ product, quantity:qty, color:selectedColor})
+  }
 
   const handleQtyChange = (e) => {
     let newQty = parseInt(e.target.value);
@@ -32,9 +37,27 @@ const Details = ({product}) => {
         </div>
 
         <div className="border-gray-200 border-t-4 flex flex-col px-5 gap-6 bg-slate-100 lg:bg-white lg:border-none">
-          <h3 className="text-primary text-3xl font-semibold mt-6">{product.name}</h3>
-          <p className="text-gray-500 text-lg">{product.description}</p> 
-          <p className="text-primary font-semibold text-xl">${product.price}</p>
+          <h3 className="text-primary text-3xl font-semibold mt-6">{product?.name}</h3>
+          <p className="text-gray-500 text-lg">{product?.description}</p> 
+
+          <div className="flex mt-6 space-x-3">
+            {
+              product?.colors?.map((color) => {
+                switch(color){
+                  case 'Grey':
+                    return <div onClick={() => {setSelectedColor(color)}} key={color} className={`${color == selectedColor ? "border-4 border-primary": ""} w-8 h-8 rounded-full bg-gray-500 cursor-pointer hover:border-4 border-primary"`} />
+                  case 'Blue':
+                    return <div onClick={() => {setSelectedColor(color)}} key={color} className={`${color == selectedColor ? "border-4 border-primary": ""} w-8 h-8 rounded-full bg-blue-800 cursor-pointer hover:border-4 border-primary"`} />
+                  case 'Black':
+                    return <div onClick={() => {setSelectedColor(color)}} key={color} className={`${color == selectedColor ? "border-4 border-primary": ""} w-8 h-8 rounded-full bg-gray-800 cursor-pointer hover:border-4 border-primary"`} />
+                  default:
+                    return <div onClick={() => {setSelectedColor(color)}} key={color} className={`${color == selectedColor ? "border-4 border-primary": ""} w-8 h-8 rounded-full bg-gray-500 cursor-pointer hover:border-4 border-primary"`} />
+                }
+              })
+            }
+          </div>
+
+          <p className="text-primary font-semibold text-xl">${product?.price}</p>
           <div className="flex flex-col">
             <label className="text-gray-500 ml-2">Qty</label>
             <input 
@@ -45,7 +68,7 @@ const Details = ({product}) => {
             />
           </div>
           <div>
-            <button className="bg-primary text-white py-3 px-5 rounded-lg">Add to Cart</button>
+            <button onClick={handleAddToCart} className="bg-primary text-white py-3 px-5 rounded-lg">Add to Cart</button>
           </div>
 
         </div>
