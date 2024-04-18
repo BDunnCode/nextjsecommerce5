@@ -39,7 +39,7 @@ const Header = () => {
             )
           }
 
-          <Link href="/order">
+          <Link href="/orders">
             <FaTruck className="text-3xl hover:scale-125 text-primary transform duration-150" />
           </Link>
           <UserButton afterSignOutUrl="/" />

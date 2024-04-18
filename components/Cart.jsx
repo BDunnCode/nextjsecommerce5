@@ -58,7 +58,7 @@ const Cart = () => {
         console.log(email)
         const res = await createOrder(email, cart);
         if(res){
-          router.push('/order')
+          router.push('/orders')
         }
       }
     } catch (error) {
