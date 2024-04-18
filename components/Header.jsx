@@ -17,13 +17,13 @@ const Header = () => {
         <Link href="/">
           <div className="flex items-center gap-3">
             <Image
-              src="/logoplaceholder.webp"
+              src="/3.png"
               alt="logo"
               width={50}
               height={50}
             />
             <div className="text-2xl lg:text-3xl font-bold">
-              TechTrove
+              TechHouse
             </div>
           </div>
         </Link>
