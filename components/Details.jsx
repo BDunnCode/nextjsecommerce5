@@ -37,8 +37,8 @@ const Details = ({product}) => {
         </div>
 
         <div className="border-gray-200 border-t-4 flex flex-col px-5 gap-6 bg-slate-100 lg:bg-white lg:border-none">
-          <h3 className="text-primary text-3xl font-semibold mt-6">{product.name}</h3>
-          <p className="text-gray-500 text-lg">{product.description}</p> 
+          <h3 className="text-primary text-3xl font-semibold mt-6">{product?.name}</h3>
+          <p className="text-gray-500 text-lg">{product?.description}</p> 
 
           <div className="flex mt-6 space-x-3">
             {
@@ -57,7 +57,7 @@ const Details = ({product}) => {
             }
           </div>
 
-          <p className="text-primary font-semibold text-xl">${product.price}</p>
+          <p className="text-primary font-semibold text-xl">${product?.price}</p>
           <div className="flex flex-col">
             <label className="text-gray-500 ml-2">Qty</label>
             <input 
