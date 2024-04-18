@@ -1,14 +1,18 @@
-"use client";
 import Image from 'next/image';
 import React from 'react'
-import { FaTrash } from 'react-icons/fa';
+import { currentUser } from "@clerk/nextjs";
+import { getOrdersByEmail } from '@/sanity/lib/sanity-utils';
 
-const Orders = () => {
-  const products = [
-    { id: 1, name: 'Product 1', qty: 1, paid: 100, paymentStatus: "paid", deliveryStatus: "in transit" },
-    { id: 2, name: 'Product 2', qty: 1, paid: 100, paymentStatus: "paid", deliveryStatus: "delivered" },
-    { id: 3, name: 'Product 3', qty: 1, paid: 100, paymentStatus: "paid", deliveryStatus: "in transit" },
-  ];
+export default async function Orders() {
+  const user = await currentUser();
+  console.log(user);
+
+  if(!user){
+    return <div className="text-center mt-20">Please sign in to view your orders</div>
+  }
+
+  const Orders = await getOrdersByEmail(user?.emailAddresses[0]);
+  console.log(user?.emailAddresses[0])
 
   return (
     <div className="max-w-3xl mx-auto mt-20">
@@ -33,9 +37,6 @@ const Orders = () => {
               </td>
               <td className="py-2 px-4">{product?.qty}</td>
               <td className="py-2 px-4">${product?.paid}</td>
-              <td className="py-2 px-4">
-                {/* <FaTrash onClick={()=>{}} className="text-[#5B20B6] mx-auto cursor-pointer" /> */}
-              </td>
             </tr>
           ))}
         </tbody>
@@ -44,4 +45,3 @@ const Orders = () => {
   )
 }
 
-export default Orders;

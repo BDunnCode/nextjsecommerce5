@@ -1,6 +1,7 @@
 import { createClient, groq } from "next-sanity";
 
 import { apiVersion, dataset, projectId, useCdn, token } from '../env'
+import Orders from "@/components/Orders";
 
 export const client = createClient({
   projectId,
@@ -9,7 +10,9 @@ export const client = createClient({
   apiVersion,
   useCdn,
   token,
-})
+});
+
+//products
 
 export async function getProducts() {
   return client.fetch(
@@ -46,3 +49,56 @@ export async function getProductBySlug(slug) {
       revalidate: 3600, 
     }});
 }
+
+// orders
+
+export async function createOrder(email, cart){
+  console.log(email, cart);
+  try {
+    const orderCreationPromises = [];
+
+    cart.forEach((orderData) => {
+      const { name, quantity, price, color} = orderData;
+
+      const orderCreationPromise = client.create({
+        _type: 'Order',
+        name,
+        qty: quantity,
+        price,
+        color,
+        paid: true,
+        delivered: false,
+        email: email,
+        createdAt: new Date().toISOString(),
+      });
+
+      orderCreationPromises.push(orderCreationPromise)
+    });
+
+    const createdOrders = await Promise.all(orderCreationPromises);
+    
+    return createdOrders;
+  } catch(error) {
+    console.error('Error creating order:', error.message);
+    throw new Error('Failed to create order');
+  }
+}
+
+export async function getOrdersByEmail(email) {
+  try {
+    const orders = await client.fetch(
+      groq`*[_type == "Order" && email==$email] | order(createdAt desc)`,
+      { email },
+      {next: {
+        revalidate: 1, 
+      }});
+
+    return orders;
+  } catch(error) {
+    console.error('Error getting orders:', error.message);
+    throw new Error('Failed to get orders');
+  }
+}
+
+
+
