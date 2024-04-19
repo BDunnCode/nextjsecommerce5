@@ -29,7 +29,6 @@ export default async function Orders() {
           {Orders?.map((order) => (
             <tr key={order?._id} className="hover:bg-gray-50 text-center border-b border-gray-300 text-primary">
               <td className="py-2 px-4 flex items-center">
-                <Image className='mr-2' src={order?.image} width={50} height={30} alt="art" />
                 {order?.name}
               </td>
               <td className="py-2 px-4">{order?.qty}</td>
