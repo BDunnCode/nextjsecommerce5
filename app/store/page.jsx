@@ -9,7 +9,7 @@ function store()  {
   const [minPrice, setMinPrice] = useState('');
   const [sortBy, setSortBy] = useState('latest');
   const [currentPage, setCurrentPage] = useState(1);
-  const [productsPerPage,setProductsPerPage] = useState(5);
+  const [productsPerPage,setProductsPerPage] = useState(10);
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
@@ -64,7 +64,7 @@ function store()  {
   };
 
   const fetchData = async () => {
-    const products = await getAllProducts();
+    const products = await getProducts();
     setData(products);
   };
 
@@ -199,7 +199,7 @@ function store()  {
       {/* Pagination */}
       <div className="mt-4">
           {data.length > productsPerPage && (
-            <ul className="flex list-none justify-center space-x-2">
+            <ul className="flex list-none justify-center space-x-2 mb-4">
               {Array.from({ length: Math.ceil(data.length / productsPerPage) }, (_, index) => (
                 <li key={index} className="cursor-pointer">
                   <a onClick={() => paginate(index + 1)} className="bg-gray-200 hover:bg-gray-300 px-3 py-2 rounded-md">
