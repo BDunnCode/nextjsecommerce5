@@ -68,13 +68,13 @@ const Details = ({product}) => {
             />
           </div>
           <div>
-            <button onClick={handleAddToCart} className="bg-primary text-white py-3 px-5 rounded-lg">Add to Cart</button>
+            <button onClick={handleAddToCart} className="bg-primary text-white py-3 px-5 rounded-lg hover:opacity-80">Add to Cart</button>
           </div>
 
         </div>
       </div>
 
-      <div className="mt-2">
+      <div className="mt-2 mb-4">
           <ul className="flex gap-4 overflow-x-auto">
               <li onClick={()=>{setSelectedImage(product?.image)}} className={`${selectedImage == product?.image? "border-4 border-primary":""} w-20 relative overflow-hidden aspect-ratio-1 cursor-pointer hover:border-4 border-[#5b20b6]`}>
                   <Image

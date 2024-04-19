@@ -13,3 +13,8 @@
 .cl-footerActionLink {
   color: #5B20B6;
 }
+
+.cl-footerActionLink:hover {
+  color: #6c32c4;
+}
+
