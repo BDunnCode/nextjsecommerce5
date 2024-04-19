@@ -100,5 +100,25 @@ export async function getOrdersByEmail(email) {
   }
 }
 
+// contact
+
+export async function createContactMessage(name, email, issue) {
+  const currentDate = new Date().toISOString();
+
+  const data = {
+    _type: 'Contact',
+    name,
+    email,
+    issue,
+    createdAt: currentDate,
+  };
+
+  const response = await client.create(data).catch((error) => {
+    console.error('Error creating contact:', error.message);
+    throw new Error('Failed to create contact');
+  });
+
+  return response;
+}
 
 

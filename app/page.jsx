@@ -42,7 +42,7 @@ export default async function Home() {
                   </svg>
                 </button>
               </Link>
-              <Link href="/">
+              <Link href="/contact">
                 <button className="bg-white text-primary border-primary border py-3 px-6 rounded-lg hover:text-white hover:bg-primary">Contact Us</button>
               </Link>
             </div>
