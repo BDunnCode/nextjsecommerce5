@@ -2,4 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+.cl-internal-b3fm6y {
+  background-color: #5B20B6;
+}
+
+.cl-formButtonPrimary {
+  background-color: #5B20B6;
+}
+
+.cl-footerActionLink {
+  color: #5B20B6;
+}
+
+.cl-footerActionLink:hover {
+  color: #6c32c4;
+}
 
